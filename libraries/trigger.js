@@ -23,10 +23,11 @@
  * @param  {Phaser.Scene} scene referecne to the Phaser scene
  * @param  {number} xSize x size of the trigger bounds
  * @param  {number} ySize y size of the trigger bounds
- * @param  {function} enter function called when the player enters the trigger first time
- * @param  {function} stay function called when the player stays in the trigger
+ * @param  {Phaser.GameObject} collisionObject object you want to check the collision with (aqui es donde pones al player lol, para que detecte colisiones y funcione todo)
+ * @param  {function} enter function called when the player enters the trigger first time (es opcional, si no pones nada en esta función no se ejecuta y ya)
+ * @param  {function} stay function called when the player stays in the trigger (es opcional, si no pones nada en esta función no se ejecuta y ya)
  * after the first time
- * @param  {function} exit funtion called when the player leaves the trigger
+ * @param  {function} exit funtion called when the player leaves the trigger (es opcional, si no pones nada en esta función no se ejecuta y ya)
  * 
  * FUNCTIONS HAS NO PARAMS, THEY AREN'T NEEDED THO 
  * 
