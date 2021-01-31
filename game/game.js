@@ -9,7 +9,7 @@ export default class Game extends Phaser.Scene {
   preload() { }
 
   create() {
-    this.label = this.add.text(400, 190, "¡<--- Eso es un trigger!", { fontColor: 0xffff00 });
+    this.label = this.add.text(400, 290, "¡<--- Eso es un trigger!", { fontColor: 0xffff00 });
     //this.player = new Player(this, 250, 250)
     this.player = new PlatformPlayer(this, 250, 250)
 
@@ -25,7 +25,7 @@ export default class Game extends Phaser.Scene {
 
     this.trigger = new Trigger({
       x: 350,
-      y: 200,
+      y: 300,
       scene: this,
       xSize: 50,
       ySize: 50,

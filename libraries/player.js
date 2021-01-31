@@ -136,19 +136,15 @@ export default class Player extends Phaser.GameObjects.Sprite {
   preUpdate(t, d) {
     //Llamamos al super para las animaciones
     super.preUpdate(t, d);
-    //Al principio de cada preUpdate, el Player se para
     this.stopX()
     this.stopY()
 
     //Si no esta hablando...
     if (this.canMove) {
-      //Calculas la velocidad
       this.calculateVelocity()
-      //Y realizas la animacion
       this.checkAnims();
     }
     else
-      //Para que no haga animaciones mientras hablas con alguien
       this.play(this.talkingAnimation, true);
   }
 

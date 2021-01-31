@@ -8,7 +8,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
 
     this.speed = 300;
-    this.jumpForce = 600;
+    this.jumpForce = 250;
 
     this.talkingAnimation = 'idle';
 
@@ -78,7 +78,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     let dirX = 0;
     //Arriba
-    if (this.cursors.up.isDown && this.onFloor) {
+    if (Phaser.Input.Keyboard.JustDown(this.cursors.up) && this.onFloor) {
       console.log('onfors')
       this.body.setVelocityY(-this.jumpForce);
     }
@@ -119,6 +119,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     //Llamamos al super para las animaciones
     super.preUpdate(t, d);
     this.onFloor = this.body.onFloor();
+    //this.onFloor = this.body.newVelocity.y < 1
     console.log(this.onFloor)
     this.stopX()
 
