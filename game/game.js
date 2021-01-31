@@ -1,6 +1,7 @@
 import Player from '../libraries/player.js'
 import PlatformPlayer from '../libraries/playerPlatform.js'
 import Trigger from '../libraries/trigger.js'
+import PauseKey from '../libraries/pauseKey.js'
 
 export default class Game extends Phaser.Scene {
   constructor() {
@@ -35,6 +36,10 @@ export default class Game extends Phaser.Scene {
       exit: () => { console.log('salgo') },
       stay: () => { console.log('me quedo') },
     })
+    //Esto te permite pausar el juego pulsando espacio, no lo recomiendo usar,
+    //tiene bugs, seguramente no sepas como se arreglan y yo si se pero no tengo tiempo lol
+    //El bug basicamente es que el input del los objetos no se cancela, lo cual ta feo
+    //this.pauseButton = new PauseKey(this, 'Space'); 
   }
 
   update(time, delta) { }

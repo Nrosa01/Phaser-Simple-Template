@@ -102,9 +102,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if (this.body.newVelocity.x === 0) {
       //Si esta quieto
       if (this.onFloor)
-        this.play('down', true);
-      else
         this.play('idle', true);
+      else
+        this.play('down', true);
     }
     //Izquierda
     else if (this.body.newVelocity.x < 0)

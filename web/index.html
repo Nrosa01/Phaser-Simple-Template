@@ -15,6 +15,7 @@
     <script type="module">
       import Game from "../game/game.js";
       import Boot from "../game/boot.js"
+      import PauseState from "../libraries/pauseState.js"
 
       var config = {
         type: Phaser.AUTO,
@@ -28,7 +29,7 @@
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
         },
-        scene: [Boot, Game],
+        scene: [Boot, Game, PauseState],
         physics: {
           default: "arcade",
           //arcade: { debug: true },
