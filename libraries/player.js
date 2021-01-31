@@ -12,7 +12,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.talkingAnimation = 'idle';
 
     //Variable para comprobar si está hablando
-    this.canMove = false;
+    this.canMove = true;
 
     //Input para el movimiento
     const { LEFT, RIGHT, UP, DOWN, W, A, S, D } = Phaser.Input.Keyboard.KeyCodes;
@@ -22,7 +22,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       up: W,
       down: S
     })
-    this.action = scene.input.keyboard.addKey('E');
 
     //ANIMACIONES    
     scene.anims.create({
@@ -72,23 +71,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
       frames: scene.anims.generateFrameNumbers('player', { start: 6, end: 6 }),
       repeat: 0
     });
-  }
-
-  keyDown() {
-    let playerInput = {}
-
-    playerInput.interact = Phaser.Input.Keyboard.JustDown(this.action)
-    playerInput.left = Phaser.Input.Keyboard.JustDown(this.cursors.left)
-    playerInput.right = Phaser.Input.Keyboard.JustDown(this.cursors.right)
-    playerInput.down = Phaser.Input.Keyboard.JustDown(this.cursors.down)
-    playerInput.up = Phaser.Input.Keyboard.JustDown(this.cursors.up)
-    playerInput.any = playerInput.interact ||
-      playerInput.lef ||
-      playerInput.right ||
-      playerInput.down ||
-      playerInput.up;
-
-    return playerInput
   }
 
   calculateVelocity() {

@@ -71,7 +71,7 @@ export default class Boot extends Phaser.Scene {
       });
   
       //Jugador
-      this.load.spritesheet('player', 'resources/game/textures/NPCs/player.png', { frameWidth: 32, frameHeight: 32 });
+      this.load.spritesheet('player', '../game/assets/player.png', { frameWidth: 32, frameHeight: 32 });
     }
   
     create() { this.scene.start('main'); }
