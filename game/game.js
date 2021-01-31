@@ -9,7 +9,8 @@ export default class Game extends Phaser.Scene {
   preload() { }
 
   create() {
-    this.label = this.add.text(400, 290, "¡<--- Eso es un trigger!", { fontColor: 0xffff00 });
+    this.add.bitmapText(400, 200, 'font', "¡Eso es un trigger!", 40);
+    //this.label = this.add.text(400, 290, "¡<--- Eso es un trigger!", { fontColor: 0xffff00 });
     //this.player = new Player(this, 250, 250)
     this.player = new PlatformPlayer(this, 250, 250)
 
