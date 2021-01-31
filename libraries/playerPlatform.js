@@ -8,7 +8,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.scene.physics.add.existing(this);
 
     this.speed = 300;
-    this.jumpForce = 150;
+    this.jumpForce = 600;
 
     this.talkingAnimation = 'idle';
 
@@ -76,16 +76,13 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   calculateVelocity() {
 
-    let dirY = 0;
     let dirX = 0;
     //Arriba
-    if (this.cursors.up.isDown) {
-      dirY = -1;
+    if (this.cursors.up.isDown && this.onFloor) {
+      console.log('onfors')
+      this.body.setVelocityY(-this.jumpForce);
     }
-    //Abajo
-    if (this.cursors.down.isDown) {
-      dirY = 1;
-    }
+
     //Izquierda
     if (this.cursors.left.isDown) {
       dirX = -1;
@@ -94,14 +91,7 @@ export default class Player extends Phaser.GameObjects.Sprite {
     if (this.cursors.right.isDown) {
       dirX = 1;
     }
-
-    let object = { x: dirX, y: dirY }
-
-    normalizeVector(object);
-
-    this.body.setVelocityX(object.x * this.speed);
-    this.body.setVelocityY(object.y * this.speed);
-
+    this.body.setVelocityX(dirX * this.speed);
   }
 
   stopX() {
@@ -128,19 +118,16 @@ export default class Player extends Phaser.GameObjects.Sprite {
   preUpdate(t, d) {
     //Llamamos al super para las animaciones
     super.preUpdate(t, d);
-    this.onFloor = this.body.onFloor()
-    //Al principio de cada preUpdate, el Player se para
+    this.onFloor = this.body.onFloor();
+    console.log(this.onFloor)
     this.stopX()
 
     //Si no esta hablando...
     if (this.canMove) {
-      //Calculas la velocidad
       this.calculateVelocity()
-      //Y realizas la animacion
       this.checkAnims();
     }
     else
-      //Para que no haga animaciones mientras hablas con alguien
       this.play(this.talkingAnimation, true);
   }
 

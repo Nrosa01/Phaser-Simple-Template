@@ -9,10 +9,9 @@ export default class Game extends Phaser.Scene {
   preload() { }
 
   create() {
-    this.label = this.add.text(10, 10, "¡Hola, mundo!", { fontColor: 0xffff00 });
-    this.label.setScrollFactor(0)
-    this.player = new Player(this, 250, 250)
-    //this.player = new PlatformPlayer(this, 250, 250)
+    this.label = this.add.text(400, 190, "¡<--- Eso es un trigger!", { fontColor: 0xffff00 });
+    //this.player = new Player(this, 250, 250)
+    this.player = new PlatformPlayer(this, 250, 250)
 
     this.platform = this.add.sprite(250, 350, 'platform')
     this.physics.add.existing(this.platform);
