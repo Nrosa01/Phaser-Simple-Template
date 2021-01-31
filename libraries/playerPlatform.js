@@ -6,9 +6,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
     this.scene.add.existing(this);
     this.scene.physics.add.existing(this);
-    this.body.allowGravity = false
 
     this.speed = 300;
+    this.jumpForce = 150;
 
     this.talkingAnimation = 'idle';
 
@@ -108,22 +108,14 @@ export default class Player extends Phaser.GameObjects.Sprite {
     this.body.setVelocityX(0);
   }
 
-  stopY() {
-    this.body.setVelocityY(0);
-  }
-
   checkAnims() {
 
     if (this.body.newVelocity.x === 0) {
       //Si esta quieto
-      if (this.body.newVelocity.y === 0)
-        this.play('idle', true);
-      //Arriba
-      else if (this.body.newVelocity.y < 0)
-        this.play('up', true);
-      //Abajo
-      else
+      if (this.onFloor)
         this.play('down', true);
+      else
+        this.play('idle', true);
     }
     //Izquierda
     else if (this.body.newVelocity.x < 0)
@@ -136,9 +128,9 @@ export default class Player extends Phaser.GameObjects.Sprite {
   preUpdate(t, d) {
     //Llamamos al super para las animaciones
     super.preUpdate(t, d);
+    this.onFloor = this.body.onFloor()
     //Al principio de cada preUpdate, el Player se para
     this.stopX()
-    this.stopY()
 
     //Si no esta hablando...
     if (this.canMove) {

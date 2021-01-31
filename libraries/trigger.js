@@ -38,6 +38,12 @@ export default class Trigger extends Phaser.GameObjects.GameObject {
 
         this.trigger = data.scene.add.zone(data.x, data.y);
         this.trigger.setSize(data.xSize, data.ySize);
+
+        //Esto no es necesario para que funcione, solo es para ver donde está el trigger sin usar imagenes, deberia comentarse si ya se usa para depurar
+        data.scene.physics.world.enable(this.trigger);
+        this.trigger.body.allowGravity = false
+        data.scene.physics.add.existing(this);
+
         this.playerRef = data.scene.player
         this.collisionToCheck = data.collisionObject
         this.hasEntered = false;
