@@ -79,7 +79,6 @@ export default class Player extends Phaser.GameObjects.Sprite {
     let dirX = 0;
     //Arriba
     if (Phaser.Input.Keyboard.JustDown(this.cursors.up) && this.onFloor) {
-      console.log('onfors')
       this.body.setVelocityY(-this.jumpForce);
     }
 
@@ -116,11 +115,8 @@ export default class Player extends Phaser.GameObjects.Sprite {
 
   }
   preUpdate(t, d) {
-    //Llamamos al super para las animaciones
     super.preUpdate(t, d);
-    this.onFloor = this.body.onFloor();
-    //this.onFloor = this.body.newVelocity.y < 1
-    console.log(this.onFloor)
+    this.onFloor = this.body.touching.down;
     this.stopX()
 
     //Si no esta hablando...
